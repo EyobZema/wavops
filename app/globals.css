@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --background: #050506;
+  --foreground: #ffffff;
+  --surface: #101014;
+  --muted: #9fa1ad;
+  --border: #272834;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: var(--font-geist-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(80, 90, 255, 0.12), transparent 35%),
+    radial-gradient(circle at 80% 5%, rgba(255, 255, 255, 0.08), transparent 30%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.interactive-card {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease;
+}
+
+.interactive-card:hover {
+  transform: translateY(-4px);
+  border-color: #505166;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  background-color: #171821;
+}
+
+.interactive-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    140deg,
+    rgba(255, 255, 255, 0.08),
+    transparent 30%,
+    transparent 70%,
+    rgba(110, 115, 255, 0.08)
+  );
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.interactive-card:hover::after {
+  opacity: 1;
+}
+
+.section-title {
+  letter-spacing: -0.03em;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
