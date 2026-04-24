@@ -8,7 +8,7 @@ const navLinks = [
 export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 mt-3 px-6 lg:px-10">
-      <div className="mx-auto max-w-6xl rounded-2xl border border-zinc-700/60 bg-zinc-950/75 backdrop-blur-md shadow-[0_10px_28px_rgba(0,0,0,0.45)]">
+      <div className="surface-glow mx-auto max-w-6xl rounded-2xl border border-zinc-700/60 bg-zinc-950/75 backdrop-blur-md">
         <div className="flex h-16 w-full items-center justify-between px-6 lg:px-8">
           <a href="#top" className="text-lg font-semibold tracking-tight text-white">
             WavOps

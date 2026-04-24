@@ -6,7 +6,7 @@
   --background: #000000;
   --foreground: #f4f4f5;
   --surface: #0a0a0b;
-  --muted: #a1a1aa;
+  --muted: #d4d4d8;
   --border: #3f3f46;
 }
 
@@ -36,9 +36,21 @@ html {
   animation: fade-up 0.7s ease-out both;
 }
 
+/* Section panels — soft white edge glow */
+.surface-glow {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 16px 48px rgba(0, 0, 0, 0.45),
+    0 0 72px rgba(255, 255, 255, 0.08);
+}
+
 .interactive-card {
   position: relative;
   overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 8px 28px rgba(0, 0, 0, 0.38),
+    0 0 40px rgba(255, 255, 255, 0.05);
   transition:
     transform 220ms ease,
     border-color 220ms ease,
@@ -49,7 +61,10 @@ html {
 .interactive-card:hover {
   transform: translateY(-4px);
   border-color: rgba(161, 161, 170, 0.35);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.14),
+    0 16px 40px rgba(0, 0, 0, 0.55),
+    0 0 56px rgba(255, 255, 255, 0.1);
   background-color: rgba(24, 24, 27, 0.9);
 }
 

@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen text-foreground">
       <video
-        className="pointer-events-none fixed inset-0 z-0 h-screen w-screen object-cover opacity-[0.12]"
+        className="pointer-events-none fixed inset-0 z-0 h-screen w-screen object-cover opacity-[0.2]"
         autoPlay
         muted
         loop

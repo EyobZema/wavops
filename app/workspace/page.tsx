@@ -132,7 +132,7 @@ export default function WorkspacePage() {
   return (
     <div className="relative min-h-screen text-foreground">
       <video
-        className="pointer-events-none fixed inset-0 z-0 h-screen w-screen object-cover opacity-[0.12]"
+        className="pointer-events-none fixed inset-0 z-0 h-screen w-screen object-cover opacity-[0.2]"
         autoPlay
         muted
         loop
@@ -145,11 +145,11 @@ export default function WorkspacePage() {
       <div className="pointer-events-none fixed inset-0 z-10 bg-black/25" aria-hidden="true" />
 
       <main className="relative z-20 px-6 py-16 lg:px-10 lg:py-20">
-        <div className="mx-auto w-full max-w-3xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-8 text-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:p-10">
+        <div className="surface-glow mx-auto w-full max-w-3xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-8 text-zinc-100 lg:p-10">
           <h1 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
             Create your secure workspace
           </h1>
-          <p className="mt-4 text-base text-zinc-400">
+          <p className="mt-4 text-base text-zinc-300">
             To analyze your dataset, we&apos;ll create a secure workspace for you.
           </p>
 

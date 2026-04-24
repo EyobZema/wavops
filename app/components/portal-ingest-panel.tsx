@@ -79,7 +79,7 @@ export default function PortalIngestPanel({ user, compact }: Props) {
     >
       <div className="interactive-card rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90 p-6 shadow-sm">
         <h2 className="text-lg font-semibold text-zinc-100">Connect Google Drive</h2>
-        <p className="mt-2 text-sm text-zinc-400">
+        <p className="mt-2 text-sm text-zinc-300">
           Mark Drive connection so we can coordinate sample pulls with your
           team.
         </p>
@@ -98,7 +98,7 @@ export default function PortalIngestPanel({ user, compact }: Props) {
         className="interactive-card rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90 p-6 shadow-sm"
       >
         <h2 className="text-lg font-semibold text-zinc-100">Share dataset details</h2>
-        <p className="mt-2 text-sm text-zinc-400">
+        <p className="mt-2 text-sm text-zinc-300">
           Paste a folder link and/or notes. We start with metadata review.
         </p>
         <label className="mt-4 block">

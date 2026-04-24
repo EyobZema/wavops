@@ -96,7 +96,7 @@ export default function PortalContent() {
   return (
     <div className="relative min-h-screen text-foreground">
       <video
-        className="pointer-events-none fixed inset-0 z-0 h-screen w-screen object-cover opacity-[0.12]"
+        className="pointer-events-none fixed inset-0 z-0 h-screen w-screen object-cover opacity-[0.2]"
         autoPlay
         muted
         loop
@@ -112,7 +112,7 @@ export default function PortalContent() {
       />
 
       <div className="relative z-20 mx-auto flex min-h-screen max-w-6xl flex-col px-4 py-6 md:px-6 lg:px-8">
-        <header className="mb-6 flex flex-col gap-4 rounded-2xl border border-zinc-700/60 bg-zinc-950/80 px-4 py-4 shadow-[0_10px_28px_rgba(0,0,0,0.45)] backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <header className="surface-glow mb-6 flex flex-col gap-4 rounded-2xl border border-zinc-700/60 bg-zinc-950/80 px-4 py-4 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="flex items-center gap-4">
             {photo ? (
               // eslint-disable-next-line @next/next/no-img-element
@@ -176,11 +176,11 @@ export default function PortalContent() {
 
         {tab === "overview" && (
           <div className="space-y-6">
-            <div className="rounded-2xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+            <div className="surface-glow rounded-2xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100">
               <h1 className="section-title text-2xl font-semibold md:text-3xl">
                 Your workspace
               </h1>
-              <p className="mt-2 text-base text-zinc-400">
+              <p className="mt-2 text-base text-zinc-300">
                 You stay signed in on this device. Add dataset details,
                 check activity, or get help below.
               </p>
@@ -198,7 +198,7 @@ export default function PortalContent() {
                   Next step
                 </p>
                 <p className="mt-2 text-lg font-semibold">Data & intake</p>
-                <p className="mt-1 text-sm text-zinc-400">
+                <p className="mt-1 text-sm text-zinc-300">
                   Connect Drive or share a link and notes
                 </p>
               </button>
@@ -213,7 +213,7 @@ export default function PortalContent() {
                   Status
                 </p>
                 <p className="mt-2 text-lg font-semibold">Activity</p>
-                <p className="mt-1 text-sm text-zinc-400">
+                <p className="mt-1 text-sm text-zinc-300">
                   Current workspace state
                 </p>
               </button>
@@ -225,7 +225,7 @@ export default function PortalContent() {
                   Support
                 </p>
                 <p className="mt-2 text-lg font-semibold">Email the team</p>
-                <p className="mt-1 text-sm text-zinc-400">
+                <p className="mt-1 text-sm text-zinc-300">
                   contact@waveops.ai
                 </p>
               </a>
@@ -234,11 +234,11 @@ export default function PortalContent() {
         )}
 
         {tab === "data" && (
-          <div className="rounded-2xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+          <div className="surface-glow rounded-2xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100">
             <h2 className="section-title text-xl font-semibold md:text-2xl">
               Data & intake
             </h2>
-            <p className="mt-2 text-sm text-zinc-400">
+            <p className="mt-2 text-sm text-zinc-300">
               Choose how you want to get your sample to WavOps.
             </p>
             <div className="mt-6">
@@ -248,11 +248,11 @@ export default function PortalContent() {
         )}
 
         {tab === "status" && (
-          <div className="rounded-2xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+          <div className="surface-glow rounded-2xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100">
             <h2 className="section-title text-xl font-semibold md:text-2xl">
               Activity
             </h2>
-            <p className="mt-2 text-sm text-zinc-400">
+            <p className="mt-2 text-sm text-zinc-300">
               Latest status from your workspace record in Firestore.
             </p>
             <div className="mt-6 rounded-xl border border-zinc-800 bg-zinc-900/80 p-4">
@@ -265,7 +265,7 @@ export default function PortalContent() {
         )}
 
         {tab === "help" && (
-          <div className="rounded-2xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
+          <div className="surface-glow rounded-2xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100">
             <h2 className="section-title text-xl font-semibold md:text-2xl">
               Help
             </h2>
