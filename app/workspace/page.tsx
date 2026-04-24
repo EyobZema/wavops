@@ -2,7 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { signInWithPopup } from "firebase/auth";
+import {
+  getRedirectResult,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 import { auth, db, firebaseEnabled, googleProvider } from "@/lib/firebase-client";
 
@@ -20,8 +24,48 @@ export default function WorkspacePage() {
 
   useEffect(() => {
     if (auth?.currentUser) {
-      router.replace("/ingest");
+      router.replace("/portal");
     }
+  }, [router]);
+
+  useEffect(() => {
+    if (!auth || !db || !firebaseEnabled) return;
+
+    let active = true;
+
+    (async () => {
+      try {
+        const result = await getRedirectResult(auth);
+        if (!result?.user || !active) return;
+
+        const draftRaw = localStorage.getItem("auditLeadDraft");
+        const draft: LeadDraft | null = draftRaw
+          ? JSON.parse(draftRaw)
+          : null;
+
+        await setDoc(
+          doc(db, "workspaces", result.user.uid),
+          {
+            userId: result.user.uid,
+            name: draft?.name || result.user.displayName || "",
+            workEmail: draft?.workEmail || result.user.email || "",
+            company: draft?.company || "",
+            datasetType: draft?.datasetType || "",
+            status: "workspace_created",
+            updatedAt: serverTimestamp(),
+          },
+          { merge: true }
+        );
+
+        router.replace("/portal");
+      } catch {
+        // Ignore; user may not be returning from redirect
+      }
+    })();
+
+    return () => {
+      active = false;
+    };
   }, [router]);
 
   async function handleGoogle() {
@@ -54,9 +98,20 @@ export default function WorkspacePage() {
         { merge: true }
       );
 
-      router.push("/ingest");
-    } catch {
-      setMessage("Google sign in failed. Please try again.");
+      router.push("/portal");
+    } catch (error) {
+      const authError = error as { code?: string; message?: string };
+      const code = authError?.code || "unknown";
+
+      // Some browsers/environments block popups; redirect flow is more reliable.
+      if (code === "auth/popup-blocked" || code === "auth/cancelled-popup-request") {
+        await signInWithRedirect(auth, googleProvider);
+        return;
+      }
+
+      setMessage(
+        `Google sign in failed (${code}). Ensure this domain is added in Firebase Auth authorized domains.`
+      );
     } finally {
       setLoading(false);
     }
