@@ -18,6 +18,7 @@ export default function PortalContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [user, setUser] = useState<User | null>(null);
+  const [authReady, setAuthReady] = useState(false);
   const [workspaceStatus, setWorkspaceStatus] = useState<string | null>(null);
 
   const tabParam = searchParams.get("tab");
@@ -32,15 +33,38 @@ export default function PortalContent() {
       return;
     }
 
-    const unsub = onAuthStateChanged(auth, (u) => {
-      if (!u) {
+    let cancelled = false;
+    let unsub: (() => void) | undefined;
+
+    (async () => {
+      // Wait until persisted session is restored. Without this, the first
+      // onAuthStateChanged event can be null and incorrectly send users to /workspace
+      // after a client navigation (e.g. Marketing site -> back to portal).
+      await auth.authStateReady();
+      if (cancelled) return;
+
+      if (!auth.currentUser) {
         router.replace("/workspace");
         return;
       }
-      setUser(u);
-    });
 
-    return () => unsub();
+      setUser(auth.currentUser);
+      setAuthReady(true);
+
+      unsub = onAuthStateChanged(auth, (u) => {
+        if (cancelled) return;
+        if (!u) {
+          router.replace("/workspace");
+          return;
+        }
+        setUser(u);
+      });
+    })();
+
+    return () => {
+      cancelled = true;
+      unsub?.();
+    };
   }, [router]);
 
   useEffect(() => {
@@ -57,7 +81,7 @@ export default function PortalContent() {
     return () => unsub();
   }, [user]);
 
-  if (!user) {
+  if (!authReady || !user) {
     return (
       <div className="grid min-h-screen place-items-center text-white/80">
         <p>Loading your workspace…</p>

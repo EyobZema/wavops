@@ -23,9 +23,21 @@ export default function WorkspacePage() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    if (auth?.currentUser) {
-      router.replace("/portal");
-    }
+    if (!auth || !firebaseEnabled) return;
+
+    let cancelled = false;
+
+    (async () => {
+      await auth.authStateReady();
+      if (cancelled) return;
+      if (auth.currentUser) {
+        router.replace("/portal");
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [router]);
 
   useEffect(() => {
