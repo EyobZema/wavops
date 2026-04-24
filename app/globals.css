@@ -4,7 +4,7 @@
   --background: #050506;
   --foreground: #ffffff;
   --surface: #101014;
-  --muted: #9fa1ad;
+  --muted: #c9ccd8;
   --border: #272834;
 }
 
@@ -46,9 +46,9 @@ html {
 
 .interactive-card:hover {
   transform: translateY(-4px);
-  border-color: #505166;
+  border-color: rgba(0, 0, 0, 0.2);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  background-color: #171821;
+  background-color: #f3f4f6;
 }
 
 .interactive-card::after {

@@ -17,12 +17,12 @@ export default function ProcessSection() {
           {steps.map((step, index) => (
             <li
               key={step}
-              className="interactive-card rounded-2xl border border-border bg-surface p-5"
+              className="interactive-card rounded-2xl border border-white/80 bg-white p-5 text-black"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-black/60">
                 Step {index + 1}
               </p>
-              <p className="mt-2 text-sm leading-7 text-foreground">{step}</p>
+              <p className="mt-2 text-sm leading-7 text-black">{step}</p>
             </li>
           ))}
         </ol>

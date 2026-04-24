@@ -9,10 +9,24 @@ import ValueSection from "./components/value-section";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen text-foreground">
+      <video
+        className="pointer-events-none fixed inset-0 z-0 h-screen w-screen object-cover opacity-[0.12]"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src="/background-video.mp4" type="video/mp4" />
+      </video>
+      <div
+        className="pointer-events-none fixed inset-0 z-10 bg-black/10"
+        aria-hidden="true"
+      />
       <Navbar />
-      <main className="relative">
-        <div className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[38rem] bg-gradient-to-b from-white/5 to-transparent" />
+      <main className="relative z-20">
         <HeroSection />
         <ProblemSection />
         <SolutionSection />
