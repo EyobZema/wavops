@@ -26,18 +26,18 @@ const values = [
 
 export default function ValueSection() {
   return (
-    <section id="value" className="animate-fade-up px-6 py-16 lg:px-10 lg:py-20">
+    <section id="value" className="animate-fade-up px-6 py-12 lg:px-10 lg:py-16">
       <div className="surface-glow mx-auto max-w-6xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-8 text-zinc-100 lg:p-10">
         <h2 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
           What You Get
         </h2>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {values.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.text}
-                className="interactive-card group relative overflow-hidden rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 p-6 lg:col-span-6"
+                className="interactive-card group relative overflow-hidden rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 p-6"
               >
                 <div
                   className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[radial-gradient(circle_at_center,rgb(16_185_129/0.1),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
@@ -47,7 +47,7 @@ export default function ValueSection() {
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-zinc-700/80 bg-zinc-950/80 text-emerald-400/95 shadow-inner">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <p className="pt-0.5 text-base font-semibold leading-snug text-zinc-100">
+                  <p className="pt-0.5 text-base font-semibold leading-relaxed text-zinc-100">
                     {item.text}
                   </p>
                 </div>

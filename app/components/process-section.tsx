@@ -37,20 +37,23 @@ function StepConnector() {
 
 export default function ProcessSection() {
   return (
-    <section id="process" className="animate-fade-up px-6 py-16 lg:px-10 lg:py-20">
+    <section
+      id="process"
+      className="animate-fade-up px-6 py-12 lg:px-10 lg:py-16"
+    >
       <div className="surface-glow mx-auto max-w-6xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-8 text-zinc-100 lg:p-10">
         <h2 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
           How It Works
         </h2>
 
-        <ol className="relative mt-10 md:hidden">
+        <ol className="relative mt-8 md:hidden">
           {steps.map((step, index) => {
             const Icon = step.icon;
             const isLast = index === steps.length - 1;
             return (
               <li
                 key={step.text}
-                className="relative flex gap-4 pb-10 pl-0 last:pb-0"
+                className="relative flex gap-4 pb-8 pl-0 last:pb-0"
               >
                 {!isLast && (
                   <div
@@ -74,7 +77,7 @@ export default function ProcessSection() {
           })}
         </ol>
 
-        <ol className="mt-10 hidden list-none p-0 md:flex md:min-w-0 md:items-stretch">
+        <ol className="mt-8 hidden list-none p-0 md:flex md:min-w-0 md:items-stretch">
           {steps.map((step, index) => {
             const Icon = step.icon;
             const isLast = index === steps.length - 1;
@@ -84,7 +87,7 @@ export default function ProcessSection() {
                 className="flex min-w-0 flex-1 items-stretch"
               >
                 <div className="interactive-card flex min-h-0 min-w-0 flex-1 flex-col rounded-2xl border border-zinc-800 bg-zinc-900/70 p-4 text-left">
-                  <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-700/70 bg-zinc-950/60 text-emerald-400/90">
+                  <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg border border-zinc-700/70 bg-zinc-950/60 text-emerald-400/90">
                     <Icon className="h-[18px] w-[18px]" />
                   </div>
                   <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-zinc-500">

@@ -30,7 +30,10 @@ const solutions = [
 
 export default function SolutionSection() {
   return (
-    <section id="solution" className="animate-fade-up px-6 py-16 lg:px-10 lg:py-20">
+    <section
+      id="solution"
+      className="animate-fade-up px-6 py-12 lg:px-10 lg:py-16"
+    >
       <div className="surface-glow mx-auto max-w-6xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-8 text-zinc-100 lg:p-10">
         <h2 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
           How WavOps Fixes It
@@ -39,13 +42,13 @@ export default function SolutionSection() {
           We combine automated analysis with structured human review so you can
           trust your training data before it reaches production.
         </p>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:gap-5">
+        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {solutions.map((item) => {
             const Icon = item.icon;
             return (
               <div
                 key={item.lead}
-                className="interactive-card group relative overflow-hidden rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 p-6 lg:col-span-6"
+                className="interactive-card group relative overflow-hidden rounded-2xl border border-zinc-800 bg-gradient-to-br from-zinc-900/90 to-zinc-950/90 p-6"
               >
                 <div
                   className="pointer-events-none absolute -right-6 -top-6 h-24 w-24 rounded-full bg-[radial-gradient(circle_at_center,rgb(16_185_129/0.12),transparent_70%)] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
