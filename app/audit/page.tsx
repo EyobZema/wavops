@@ -43,14 +43,14 @@ export default function AuditPage() {
       >
         <source src="/background-video.mp4" type="video/mp4" />
       </video>
-      <div className="pointer-events-none fixed inset-0 z-10 bg-black/10" aria-hidden="true" />
+      <div className="pointer-events-none fixed inset-0 z-10 bg-black/25" aria-hidden="true" />
 
       <main className="relative z-20 px-6 py-16 lg:px-10 lg:py-20">
-        <div className="mx-auto w-full max-w-3xl rounded-3xl border border-white/80 bg-white p-8 text-black shadow-[0_20px_50px_rgba(0,0,0,0.35)] lg:p-10">
+        <div className="mx-auto w-full max-w-3xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-8 text-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:p-10">
           <h1 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
             Get Free Dataset Audit
           </h1>
-          <p className="mt-3 text-sm text-black/70 md:text-base">
+          <p className="mt-3 text-sm text-zinc-400 md:text-base">
             Tell us a few details and we will set up your secure workspace.
           </p>
 
@@ -61,7 +61,7 @@ export default function AuditPage() {
                 name="name"
                 type="text"
                 required
-                className="w-full rounded-xl border border-black/20 px-4 py-3 text-sm outline-none transition focus:border-black/40"
+                className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-zinc-500"
                 placeholder="Jane Doe"
               />
             </label>
@@ -72,7 +72,7 @@ export default function AuditPage() {
                 name="workEmail"
                 type="email"
                 required
-                className="w-full rounded-xl border border-black/20 px-4 py-3 text-sm outline-none transition focus:border-black/40"
+                className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-zinc-500"
                 placeholder="jane@company.com"
               />
             </label>
@@ -83,7 +83,7 @@ export default function AuditPage() {
                 name="company"
                 type="text"
                 required
-                className="w-full rounded-xl border border-black/20 px-4 py-3 text-sm outline-none transition focus:border-black/40"
+                className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-zinc-500"
                 placeholder="Acme AI"
               />
             </label>
@@ -95,7 +95,7 @@ export default function AuditPage() {
               <input
                 name="datasetType"
                 type="text"
-                className="w-full rounded-xl border border-black/20 px-4 py-3 text-sm outline-none transition focus:border-black/40"
+                className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-zinc-500"
                 placeholder="Speech, music, podcasts, multilingual..."
               />
             </label>
@@ -103,7 +103,7 @@ export default function AuditPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="rounded-full bg-black px-7 py-3 text-sm font-semibold text-white transition hover:bg-black/90 disabled:opacity-70"
+              className="rounded-full bg-zinc-100 px-7 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-white disabled:opacity-70"
             >
               {isSubmitting ? "Continuing..." : "Continue"}
             </button>

@@ -20,7 +20,7 @@ export default function SolutionSection() {
           {solutions.map((item) => (
             <div
               key={item}
-              className="interactive-card rounded-2xl border border-white/80 bg-white p-6 text-black"
+              className="interactive-card rounded-2xl border border-zinc-700/80 bg-zinc-900/70 p-6 text-zinc-200"
             >
               {item}
             </div>

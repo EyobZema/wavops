@@ -77,9 +77,9 @@ export default function PortalIngestPanel({ user, compact }: Props) {
           : "grid gap-5 md:grid-cols-2"
       }
     >
-      <div className="interactive-card rounded-2xl border border-black/10 bg-gradient-to-b from-white to-slate-50/80 p-6 shadow-sm">
-        <h2 className="text-lg font-semibold">Connect Google Drive</h2>
-        <p className="mt-2 text-sm text-black/70">
+      <div className="interactive-card rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90 p-6 shadow-sm">
+        <h2 className="text-lg font-semibold text-zinc-100">Connect Google Drive</h2>
+        <p className="mt-2 text-sm text-zinc-400">
           Mark Drive connection so we can coordinate sample pulls with your
           team.
         </p>
@@ -87,7 +87,7 @@ export default function PortalIngestPanel({ user, compact }: Props) {
           type="button"
           onClick={markDriveConnected}
           disabled={isBusy}
-          className="mt-5 rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/90 disabled:opacity-70"
+          className="mt-5 rounded-full bg-zinc-100 px-5 py-2.5 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 hover:bg-white disabled:opacity-70"
         >
           Connect Google Drive
         </button>
@@ -95,42 +95,42 @@ export default function PortalIngestPanel({ user, compact }: Props) {
 
       <form
         onSubmit={submitDatasetDetails}
-        className="interactive-card rounded-2xl border border-black/10 bg-gradient-to-b from-white to-slate-50/80 p-6 shadow-sm"
+        className="interactive-card rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-900/90 to-zinc-950/90 p-6 shadow-sm"
       >
-        <h2 className="text-lg font-semibold">Share dataset details</h2>
-        <p className="mt-2 text-sm text-black/70">
+        <h2 className="text-lg font-semibold text-zinc-100">Share dataset details</h2>
+        <p className="mt-2 text-sm text-zinc-400">
           Paste a folder link and/or notes. We start with metadata review.
         </p>
         <label className="mt-4 block">
-          <span className="mb-2 block text-sm font-medium">
+          <span className="mb-2 block text-sm font-medium text-zinc-300">
             Google Drive / dataset link
           </span>
           <input
             type="url"
             name="datasetLink"
             placeholder="https://drive.google.com/..."
-            className="w-full rounded-xl border border-black/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-black/40"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition focus:border-zinc-500"
           />
         </label>
         <label className="mt-4 block">
-          <span className="mb-2 block text-sm font-medium">Notes</span>
+          <span className="mb-2 block text-sm font-medium text-zinc-300">Notes</span>
           <textarea
             name="datasetNotes"
             rows={compact ? 3 : 4}
             placeholder="Size, format, language mix, known issues…"
-            className="w-full rounded-xl border border-black/20 bg-white px-4 py-3 text-sm outline-none transition focus:border-black/40"
+            className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 placeholder:text-zinc-600 outline-none transition focus:border-zinc-500"
           />
         </label>
         <button
           type="submit"
           disabled={isBusy}
-          className="mt-5 w-full rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/90 disabled:opacity-70 md:w-auto"
+          className="mt-5 w-full rounded-full bg-zinc-100 px-5 py-2.5 text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 hover:bg-white disabled:opacity-70 md:w-auto"
         >
           Continue to analysis
         </button>
       </form>
 
-      {message ? <p className="text-sm text-red-700 md:col-span-2">{message}</p> : null}
+      {message ? <p className="text-sm text-red-400 md:col-span-2">{message}</p> : null}
     </div>
   );
 }

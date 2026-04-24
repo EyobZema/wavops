@@ -14,19 +14,19 @@ export default function ConfirmationPage() {
       >
         <source src="/background-video.mp4" type="video/mp4" />
       </video>
-      <div className="pointer-events-none fixed inset-0 z-10 bg-black/10" aria-hidden="true" />
+      <div className="pointer-events-none fixed inset-0 z-10 bg-black/25" aria-hidden="true" />
 
       <main className="relative z-20 grid min-h-screen place-items-center px-6 py-16">
-        <div className="w-full max-w-2xl rounded-3xl border border-white/80 bg-white p-8 text-center text-black shadow-[0_20px_50px_rgba(0,0,0,0.35)] lg:p-10">
+        <div className="w-full max-w-2xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-8 text-center text-zinc-100 shadow-[0_20px_50px_rgba(0,0,0,0.45)] lg:p-10">
           <h1 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
             Your dataset is being analyzed
           </h1>
-          <p className="mt-4 text-base text-black/70">
+          <p className="mt-4 text-base text-zinc-400">
             We&apos;ll email you as soon as your initial audit report is ready.
           </p>
           <Link
             href="/"
-            className="mt-8 inline-block rounded-full bg-black px-7 py-3 text-sm font-semibold text-white transition hover:bg-black/90"
+            className="mt-8 inline-block rounded-full bg-zinc-100 px-7 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-white"
           >
             Back to Home
           </Link>

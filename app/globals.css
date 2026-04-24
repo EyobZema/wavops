@@ -1,11 +1,13 @@
 @import "tailwindcss";
 
+/* Chrome / system-style dark: near-black page, high-contrast text */
 :root {
-  --background: #050506;
-  --foreground: #ffffff;
-  --surface: #101014;
-  --muted: #c9ccd8;
-  --border: #272834;
+  color-scheme: dark;
+  --background: #000000;
+  --foreground: #f4f4f5;
+  --surface: #0a0a0b;
+  --muted: #a1a1aa;
+  --border: #3f3f46;
 }
 
 @theme inline {
@@ -22,8 +24,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   background-image:
-    radial-gradient(circle at 15% 10%, rgba(80, 90, 255, 0.12), transparent 35%),
-    radial-gradient(circle at 80% 5%, rgba(255, 255, 255, 0.08), transparent 30%);
+    radial-gradient(circle at 15% 10%, rgba(80, 90, 255, 0.1), transparent 40%),
+    radial-gradient(circle at 80% 5%, rgba(255, 255, 255, 0.04), transparent 32%);
 }
 
 html {
@@ -46,9 +48,9 @@ html {
 
 .interactive-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(0, 0, 0, 0.2);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
-  background-color: #f3f4f6;
+  border-color: rgba(161, 161, 170, 0.35);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.55);
+  background-color: rgba(24, 24, 27, 0.9);
 }
 
 .interactive-card::after {

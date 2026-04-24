@@ -22,7 +22,7 @@ export default function Home() {
         <source src="/background-video.mp4" type="video/mp4" />
       </video>
       <div
-        className="pointer-events-none fixed inset-0 z-10 bg-black/10"
+        className="pointer-events-none fixed inset-0 z-10 bg-black/25"
         aria-hidden="true"
       />
       <Navbar />
