@@ -14,10 +14,10 @@ export default function HeroSection() {
         </p>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
           <a
-            href="#cta"
+            href="/audit"
             className="rounded-full bg-white px-7 py-3 text-center text-sm font-semibold text-black transition hover:-translate-y-0.5 hover:shadow-[0_10px_30px_rgba(255,255,255,0.18)]"
           >
-            Request Dataset Audit
+            Get Free Dataset Audit
           </a>
           <a
             href="#process"

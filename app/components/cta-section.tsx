@@ -6,10 +6,10 @@ export default function CtaSection() {
           Find out what&apos;s really inside your dataset
         </h2>
         <a
-          href="mailto:contact@waveops.ai?subject=Request%20Free%20Audit"
+          href="/audit"
           className="mt-8 inline-block rounded-full bg-black px-8 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-black/90"
         >
-          Request Free Audit
+          Get Free Dataset Audit
         </a>
       </div>
     </section>

@@ -25,10 +25,10 @@ export default function Navbar() {
             ))}
           </nav>
           <a
-            href="#cta"
+          href="/audit"
             className="rounded-full border border-white/20 bg-white px-4 py-2 text-sm font-medium text-black transition hover:-translate-y-0.5 hover:shadow-[0_0_0_4px_rgba(255,255,255,0.08)]"
           >
-            Request Free Audit
+          Get Free Dataset Audit
           </a>
         </div>
       </div>
