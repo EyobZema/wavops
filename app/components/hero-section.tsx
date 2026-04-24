@@ -9,7 +9,7 @@ export default function HeroSection() {
           Your audio dataset is not as clean as you think.
         </h1>
         <p className="mt-6 max-w-3xl text-lg leading-8 text-muted md:text-xl">
-          WaveOps identifies hidden labeling errors, noise artifacts, and
+          WavOps identifies hidden labeling errors, noise artifacts, and
           inconsistencies that reduce AI model performance.
         </p>
         <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">

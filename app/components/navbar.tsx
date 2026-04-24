@@ -10,7 +10,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border/80 bg-[#09090d]/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 lg:px-10">
         <a href="#top" className="text-lg font-semibold tracking-tight text-white">
-          WaveOps
+          WavOps
         </a>
         <nav className="hidden items-center gap-6 text-sm text-muted md:flex">
           {navLinks.map((link) => (

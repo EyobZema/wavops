@@ -10,23 +10,23 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "WaveOps | Audio Data Intelligence for AI Systems",
+  title: "WavOps | Audio Data Intelligence for AI Systems",
   description:
-    "WaveOps identifies hidden labeling errors, noise artifacts, and inconsistencies in audio datasets to improve AI model performance.",
+    "WavOps identifies hidden labeling errors, noise artifacts, and inconsistencies in audio datasets to improve AI model performance.",
   metadataBase: new URL("https://waveops.ai"),
   openGraph: {
-    title: "WaveOps | Audio Data Intelligence for AI Systems",
+    title: "WavOps | Audio Data Intelligence for AI Systems",
     description:
       "Find hidden audio data issues before they impact your model training.",
     url: "https://waveops.ai",
-    siteName: "WaveOps",
+    siteName: "WavOps",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WaveOps | Audio Data Intelligence for AI Systems",
+    title: "WavOps | Audio Data Intelligence for AI Systems",
     description:
-      "WaveOps helps teams ship cleaner, more reliable audio datasets for AI.",
+      "WavOps helps teams ship cleaner, more reliable audio datasets for AI.",
   },
 };
 

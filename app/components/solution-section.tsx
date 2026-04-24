@@ -10,7 +10,7 @@ export default function SolutionSection() {
     <section id="solution" className="animate-fade-up px-6 py-16 lg:px-10 lg:py-20">
       <div className="mx-auto max-w-6xl">
         <h2 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
-          How WaveOps Fixes It
+          How WavOps Fixes It
         </h2>
         <p className="mt-4 max-w-3xl text-lg text-muted">
           We combine automated analysis with structured human review so you can
