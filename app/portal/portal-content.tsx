@@ -218,7 +218,7 @@ export default function PortalContent() {
                 </p>
               </button>
               <a
-                href="mailto:contact@waveops.ai?subject=Workspace%20help"
+                href="mailto:contact@waveops.io?subject=Workspace%20help"
                 className="interactive-card rounded-2xl border border-zinc-700/80 bg-zinc-900/60 p-5 text-left text-zinc-100 shadow-sm"
               >
                 <p className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
@@ -226,7 +226,7 @@ export default function PortalContent() {
                 </p>
                 <p className="mt-2 text-lg font-semibold">Email the team</p>
                 <p className="mt-1 text-sm text-zinc-300">
-                  contact@waveops.ai
+                  contact@waveops.io
                 </p>
               </a>
             </div>
@@ -278,9 +278,9 @@ export default function PortalContent() {
                 For dataset access questions, email{" "}
                 <a
                   className="font-medium text-zinc-100 underline"
-                  href="mailto:contact@waveops.ai"
+                  href="mailto:contact@waveops.io"
                 >
-                  contact@waveops.ai
+                  contact@waveops.io
                 </a>
                 .
               </li>

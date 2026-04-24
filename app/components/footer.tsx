@@ -6,10 +6,10 @@ export default function Footer() {
           <p className="font-semibold text-foreground">WavOps</p>
           <p className="text-muted/90">Audio Data Intelligence for AI Systems</p>
           <a
-            href="mailto:contact@waveops.ai"
+            href="mailto:contact@waveops.io"
             className="transition-colors hover:text-foreground"
           >
-            contact@waveops.ai
+            contact@waveops.io
           </a>
         </div>
       </div>
