@@ -1,6 +1,24 @@
 export default function HeroSection() {
   return (
-    <section id="top" className="animate-fade-up px-6 pt-20 pb-20 lg:px-10 lg:pt-32">
+    <section
+      id="top"
+      className="animate-fade-up relative isolate overflow-hidden px-6 pt-20 pb-20 lg:px-10 lg:pt-32"
+    >
+      <video
+        className="pointer-events-none absolute inset-0 -z-20 h-full w-full object-cover opacity-30"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        aria-hidden="true"
+      >
+        <source src="/background-video.mp4" type="video/mp4" />
+      </video>
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-black/65 via-black/70 to-background"
+        aria-hidden="true"
+      />
       <div className="mx-auto max-w-6xl">
         <p className="mb-5 inline-flex rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.14em] text-muted">
           Audio Data Intelligence for AI Systems
