@@ -32,17 +32,17 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 mt-4 px-4 sm:px-6 lg:mt-6 lg:px-10">
+    <header className="sticky top-0 z-50 mt-3 px-3 sm:px-6 lg:mt-6 lg:px-10">
       <div className="surface-glow mx-auto max-w-6xl overflow-hidden rounded-2xl border border-zinc-700/60 bg-zinc-950/75 backdrop-blur-md">
         <div
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_-20%,rgb(16_185_129/0.14),transparent_40%),radial-gradient(circle_at_100%_0%,rgb(80_90_255/0.12),transparent_38%)]"
           aria-hidden
         />
 
-        <div className="relative flex min-h-16 w-full items-center justify-between gap-3 px-4 py-3 sm:px-5 lg:px-6">
+        <div className="relative flex min-h-14 w-full items-center justify-between gap-2.5 px-3 py-2.5 sm:px-5 lg:px-6">
           <a
             href="https://wavops.io"
-            className="shrink-0 text-lg font-semibold tracking-tight text-white transition hover:text-emerald-300"
+            className="shrink-0 text-base sm:text-lg font-semibold tracking-tight text-white transition hover:text-emerald-300"
           >
             WavOps
           </a>
@@ -78,24 +78,24 @@ export default function Navbar() {
             </a>
             <a
               href="mailto:contact@wavops.io"
-              className="shrink-0 rounded-full border border-emerald-400/20 bg-gradient-to-b from-emerald-400/90 to-emerald-500/90 px-3 py-1.5 text-xs font-semibold text-zinc-950 sm:hidden"
+              className="shrink-0 rounded-full border border-emerald-400/20 bg-gradient-to-b from-emerald-400/90 to-emerald-500/90 px-2.5 py-1.5 text-[11px] font-semibold text-zinc-950 sm:hidden"
             >
               Audit
             </a>
             <button
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
-              className="rounded-lg border border-zinc-700/80 bg-zinc-900/70 p-2 text-zinc-200 transition hover:border-zinc-500 hover:text-white md:hidden"
+              className="rounded-lg border border-zinc-700/80 bg-zinc-900/70 p-1.5 text-zinc-200 transition hover:border-zinc-500 hover:text-white md:hidden"
               aria-label="Toggle navigation"
               aria-expanded={mobileOpen}
             >
-              <MenuIcon className="h-5 w-5" />
+              <MenuIcon className="h-4.5 w-4.5" />
             </button>
           </div>
         </div>
 
         {mobileOpen && (
-          <div className="relative border-t border-zinc-700/70 bg-zinc-950/85 px-4 py-3 md:hidden">
+          <div className="relative border-t border-zinc-700/70 bg-zinc-950/85 px-3 py-2.5 md:hidden">
             <nav className="grid gap-2">
               {sectionLinks.map((link) => (
                 <a
