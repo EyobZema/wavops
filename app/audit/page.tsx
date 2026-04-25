@@ -13,10 +13,12 @@ type LeadDraft = {
 export default function AuditPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsSubmitting(true);
+    setError("");
 
     const formData = new FormData(event.currentTarget);
     const payload: LeadDraft = {
@@ -26,8 +28,22 @@ export default function AuditPage() {
       datasetType: String(formData.get("datasetType") || ""),
     };
 
-    localStorage.setItem("auditLeadDraft", JSON.stringify(payload));
-    router.push("/workspace");
+    const response = await fetch("/api/audit-submissions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+
+    if (!response.ok) {
+      const data = (await response.json().catch(() => null)) as
+        | { error?: string }
+        | null;
+      setError(data?.error || "Could not submit right now.");
+      setIsSubmitting(false);
+      return;
+    }
+
+    router.push("/confirmation");
   }
 
   return (
@@ -51,7 +67,7 @@ export default function AuditPage() {
             Get Free Dataset Audit
           </h1>
           <p className="mt-3 text-sm text-zinc-300 md:text-base">
-            Tell us a few details and we will set up your secure workspace.
+            Tell us a few details and we will review your dataset.
           </p>
 
           <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
@@ -100,12 +116,14 @@ export default function AuditPage() {
               />
             </label>
 
+            {error ? <p className="text-sm text-red-400">{error}</p> : null}
+
             <button
               type="submit"
               disabled={isSubmitting}
               className="rounded-full bg-zinc-100 px-7 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-white disabled:opacity-70"
             >
-              {isSubmitting ? "Continuing..." : "Continue"}
+              {isSubmitting ? "Submitting..." : "Submit audit request"}
             </button>
           </form>
         </div>

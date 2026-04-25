@@ -42,7 +42,7 @@ export default function Navbar() {
         <div className="relative flex min-h-14 w-full items-center justify-between gap-2.5 px-3 py-2.5 sm:px-5 lg:px-6">
           <a
             href="https://wavops.io"
-            className="shrink-0 text-base sm:text-lg font-semibold tracking-tight text-white transition hover:text-emerald-300"
+            className="shrink-0 text-base font-semibold tracking-tight text-white transition hover:text-emerald-300 sm:text-lg"
           >
             WavOps
           </a>
@@ -70,18 +70,18 @@ export default function Navbar() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <a
-              href="mailto:contact@wavops.io"
+            <Link
+              href="/audit"
               className="hidden shrink-0 rounded-full border border-emerald-400/20 bg-gradient-to-b from-emerald-400/90 to-emerald-500/90 px-4 py-2 text-sm font-semibold text-zinc-950 shadow-[0_8px_24px_rgba(16,185,129,0.28)] transition hover:-translate-y-0.5 hover:from-emerald-300/95 hover:to-emerald-500/90 sm:inline-flex"
             >
               Get Free Dataset Audit
-            </a>
-            <a
-              href="mailto:contact@wavops.io"
+            </Link>
+            <Link
+              href="/audit"
               className="shrink-0 rounded-full border border-emerald-400/20 bg-gradient-to-b from-emerald-400/90 to-emerald-500/90 px-2.5 py-1.5 text-[11px] font-semibold text-zinc-950 sm:hidden"
             >
               Audit
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
@@ -89,7 +89,7 @@ export default function Navbar() {
               aria-label="Toggle navigation"
               aria-expanded={mobileOpen}
             >
-              <MenuIcon className="h-4.5 w-4.5" />
+              <MenuIcon className="h-4 w-4" />
             </button>
           </div>
         </div>

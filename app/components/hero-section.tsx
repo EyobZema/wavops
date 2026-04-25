@@ -18,12 +18,12 @@ export default function HeroSection() {
           labeling errors, artifacts, and edge cases models miss.
         </p>
         <div className="mt-5 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
-          <a
-            href="mailto:contact@wavops.io"
+          <Link
+            href="/audit"
             className="rounded-full bg-zinc-100 px-5 py-2.5 text-center text-sm font-semibold text-zinc-950 transition hover:-translate-y-0.5 hover:bg-white hover:shadow-[0_10px_30px_rgba(255,255,255,0.12)] sm:px-7 sm:py-3"
           >
             Get Free Dataset Audit
-          </a>
+          </Link>
           <a
             href="/how-wavops-works"
             className="rounded-full border border-zinc-700 bg-zinc-900/80 px-5 py-2.5 text-center text-sm font-medium text-zinc-200 transition hover:-translate-y-0.5 hover:border-zinc-500 hover:bg-zinc-800/80 sm:px-7 sm:py-3"
