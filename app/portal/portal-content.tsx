@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -84,7 +84,7 @@ export default function PortalContent() {
   if (!authReady || !user) {
     return (
       <div className="grid min-h-screen place-items-center text-white/80">
-        <p>Loading your workspace…</p>
+        <p>Loading your workspaceâ€¦</p>
       </div>
     );
   }
@@ -218,7 +218,7 @@ export default function PortalContent() {
                 </p>
               </button>
               <a
-                href="mailto:contact@waveops.io?subject=Workspace%20help"
+                href="mailto:contact@wavops.io?subject=Workspace%20help"
                 className="interactive-card rounded-2xl border border-zinc-700/80 bg-zinc-900/60 p-5 text-left text-zinc-100 shadow-sm"
               >
                 <p className="text-sm font-semibold uppercase tracking-wide text-zinc-500">
@@ -226,7 +226,7 @@ export default function PortalContent() {
                 </p>
                 <p className="mt-2 text-lg font-semibold">Email the team</p>
                 <p className="mt-1 text-sm text-zinc-300">
-                  contact@waveops.io
+                  contact@wavops.io
                 </p>
               </a>
             </div>
@@ -278,9 +278,9 @@ export default function PortalContent() {
                 For dataset access questions, email{" "}
                 <a
                   className="font-medium text-zinc-100 underline"
-                  href="mailto:contact@waveops.io"
+                  href="mailto:contact@wavops.io"
                 >
-                  contact@waveops.io
+                  contact@wavops.io
                 </a>
                 .
               </li>
@@ -291,3 +291,4 @@ export default function PortalContent() {
     </div>
   );
 }
+

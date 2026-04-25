@@ -1,4 +1,4 @@
-const navLinks = [
+﻿const navLinks = [
   { label: "Problem", href: "#problem" },
   { label: "Solution", href: "#solution" },
   { label: "Process", href: "#process" },
@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="surface-glow mx-auto max-w-6xl rounded-2xl border border-zinc-700/60 bg-zinc-950/75 backdrop-blur-md">
         <div className="flex h-16 w-full items-center justify-between px-6 lg:px-8">
           <a
-            href="#top"
+            href="https://wavops.io"
             className="text-lg font-semibold tracking-tight text-white"
           >
             WavOps
@@ -26,9 +26,15 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <a href="/audio-dataset-problems" className="transition-colors hover:text-foreground">
+              Dataset Problems
+            </a>
+            <a href="/how-wavops-works" className="transition-colors hover:text-foreground">
+              How WavOps Works
+            </a>
           </nav>
           <a
-            href="/audit"
+            href="mailto:contact@wavops.io"
             className="rounded-full border border-zinc-600/80 bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-950 transition hover:-translate-y-0.5 hover:bg-white"
           >
             Get Free Dataset Audit
@@ -38,3 +44,4 @@ export default function Navbar() {
     </header>
   );
 }
+

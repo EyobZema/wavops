@@ -1,11 +1,28 @@
+﻿import type { Metadata } from "next";
 import CtaSection from "./components/cta-section";
 import Footer from "./components/footer";
 import HeroSection from "./components/hero-section";
 import Navbar from "./components/navbar";
 import ProblemSection from "./components/problem-section";
 import ProcessSection from "./components/process-section";
+import SocialProofSection from "./components/social-proof-section";
 import SolutionSection from "./components/solution-section";
 import ValueSection from "./components/value-section";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "WavOps",
+  url: "https://wavops.io",
+  email: "contact@wavops.io",
+  sameAs: ["https://wavops.io"],
+};
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 export default function Home() {
   return (
@@ -32,9 +49,15 @@ export default function Home() {
         <SolutionSection />
         <ProcessSection />
         <ValueSection />
+        <SocialProofSection />
         <CtaSection />
       </main>
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 
@@ -9,24 +9,27 @@ const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
 });
 
+const description =
+  "WavOps identifies hidden labeling errors, noise artifacts, and inconsistencies in audio datasets for AI training.";
+
 export const metadata: Metadata = {
-  title: "WavOps | Audio Data Intelligence for AI Systems",
-  description:
-    "WavOps identifies hidden labeling errors, noise artifacts, and inconsistencies in audio datasets to improve AI model performance.",
-  metadataBase: new URL("https://waveops.ai"),
+  title: "WavOps – Audio Data Intelligence for AI Systems",
+  description,
+  metadataBase: new URL("https://wavops.io"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "WavOps | Audio Data Intelligence for AI Systems",
-    description:
-      "Find hidden audio data issues before they impact your model training.",
-    url: "https://waveops.ai",
+    title: "WavOps – Audio Data Intelligence for AI Systems",
+    description,
+    url: "https://wavops.io",
     siteName: "WavOps",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "WavOps | Audio Data Intelligence for AI Systems",
-    description:
-      "WavOps helps teams ship cleaner, more reliable audio datasets for AI.",
+    title: "WavOps – Audio Data Intelligence for AI Systems",
+    description,
   },
 };
 
@@ -46,3 +49,4 @@ export default function RootLayout({
     </html>
   );
 }
+

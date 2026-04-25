@@ -1,4 +1,4 @@
-import {
+﻿import {
   IconCpu,
   IconPackage,
   IconRoute,
@@ -9,7 +9,7 @@ import {
 const steps = [
   { text: "Upload or connect dataset", icon: IconUpload },
   { text: "Automated audio analysis", icon: IconCpu },
-  { text: "Smart routing for QA", icon: IconRoute },
+  { text: "Musician-driven QA", icon: IconRoute },
   { text: "Multi-review agreement system", icon: IconUsersRound },
   { text: "Final structured dataset output", icon: IconPackage },
 ] as const;
@@ -106,3 +106,4 @@ export default function ProcessSection() {
     </section>
   );
 }
+
