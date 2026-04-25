@@ -25,9 +25,9 @@ export default function ProblemSection() {
   return (
     <section
       id="problem"
-      className="animate-fade-up px-6 py-12 lg:px-10 lg:py-16"
+      className="animate-fade-up px-4 py-10 sm:px-6 lg:px-10 lg:py-16"
     >
-      <div className="surface-glow mx-auto max-w-6xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-8 text-zinc-100 lg:p-10">
+      <div className="surface-glow mx-auto max-w-6xl rounded-3xl border border-zinc-700/80 bg-zinc-950 p-6 text-zinc-100 sm:p-8 lg:p-10">
         <h2 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
           The Hidden Problem in Audio Datasets
         </h2>

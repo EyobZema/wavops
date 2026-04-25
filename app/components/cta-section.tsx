@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 
 function ArrowIcon(props: { className?: string }) {
   return (
@@ -39,7 +39,7 @@ export default function CtaSection() {
               Get Free Dataset Audit
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-zinc-400">
-              Submit your dataset ? receive audit ? review findings.
+              Submit your dataset -&gt; receive audit -&gt; review findings.
             </p>
             <a
               href="mailto:contact@wavops.io"
