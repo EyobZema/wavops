@@ -57,7 +57,16 @@ export default async function AdminSubmissionsPage() {
           <h1 className="section-title text-3xl font-semibold tracking-tight md:text-4xl">
             Audit Submissions
           </h1>
-          <p className="mt-2 text-zinc-300">Signed in as {session.email}</p>
+          <p className="mt-2 text-sm text-zinc-500">
+            <a
+              className="text-emerald-400/90 underline decoration-emerald-500/30 underline-offset-2 hover:text-emerald-300"
+              href="/admin/ingest-access"
+            >
+              WavOps Ingest access
+            </a>
+            <span className="text-zinc-600"> — </span>
+            signed in as {session.email}
+          </p>
 
           <form action="/api/admin/logout" method="post" className="mt-4">
             <button

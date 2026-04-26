@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { FormEvent, useState } from "react";
+import { LegalAgreementField } from "@/components/upload";
 
 function ArrowIcon(props: { className?: string }) {
   return (
@@ -25,9 +26,14 @@ function ArrowIcon(props: { className?: string }) {
 export default function CtaSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
+  const [agreed, setAgreed] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!agreed) {
+      setStatusMessage("Please accept the Terms of Service to continue.");
+      return;
+    }
     setIsSubmitting(true);
     setStatusMessage("");
 
@@ -55,6 +61,7 @@ export default function CtaSection() {
     }
 
     (event.currentTarget as HTMLFormElement).reset();
+    setAgreed(false);
     setStatusMessage("Submission received. We will reach out soon.");
     setIsSubmitting(false);
   }
@@ -120,11 +127,18 @@ export default function CtaSection() {
                 placeholder="Speech, music, podcasts"
               />
             </label>
+            <LegalAgreementField
+              variant="audit"
+              agreed={agreed}
+              onAgreedChange={setAgreed}
+              disabled={isSubmitting}
+              className="mb-1 mt-0"
+            />
             <div className="flex flex-wrap items-center gap-3">
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-gradient-to-b from-emerald-400/90 to-emerald-500/90 px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-[0_8px_32px_rgba(16,185,129,0.25)] transition hover:-translate-y-0.5 hover:from-emerald-300/95 hover:to-emerald-500/90 disabled:opacity-70"
+                disabled={isSubmitting || !agreed}
+                className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-gradient-to-b from-emerald-400/90 to-emerald-500/90 px-5 py-2.5 text-sm font-semibold text-zinc-950 shadow-[0_8px_32px_rgba(16,185,129,0.25)] transition hover:-translate-y-0.5 hover:from-emerald-300/95 hover:to-emerald-500/90 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? "Submitting..." : "Get Free Dataset Audit"}
                 <ArrowIcon className="h-4 w-4" />

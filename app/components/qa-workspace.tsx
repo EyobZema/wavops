@@ -65,9 +65,14 @@ function StepNav({ step }: { step: "Upload" | "Analyze" | "Review" | "Export" })
   );
 }
 
-export default function QaWorkspace() {
+type QaWorkspaceProps = {
+  /** When set (WavOps Ingest is signed in), used as the QA `user_id` and shows session UI. */
+  ingestUserEmail?: string;
+};
+
+export default function QaWorkspace({ ingestUserEmail }: QaWorkspaceProps) {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
-  const userId = "qa_reviewer";
+  const userId = ingestUserEmail?.trim() || "qa_reviewer";
   const [datasets, setDatasets] = useState<Dataset[]>([]);
   const [datasetId, setDatasetId] = useState<string>("");
   const [datasetName, setDatasetName] = useState<string>("");
@@ -260,12 +265,41 @@ export default function QaWorkspace() {
     <section className="animate-fade-up px-4 pb-10 pt-8 sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="surface-glow mb-5 rounded-2xl border border-zinc-700/70 bg-zinc-950/75 p-5">
-          <h1 className="section-title text-2xl font-semibold text-zinc-100 sm:text-3xl">WavOps QA Workspace</h1>
-          <p className="mt-2 text-sm text-zinc-400">
-            Queue-based, multi-user audio QA workflow: upload, analyze, review, export.
-          </p>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div>
+              <h1 className="section-title text-2xl font-semibold text-zinc-100 sm:text-3xl">
+                WavOps Ingest
+              </h1>
+              <p className="mt-2 text-sm text-zinc-400">
+                Queue-based audio QA: upload, analyze, review, and export. Multi-user when your API
+                is configured.
+              </p>
+              {ingestUserEmail ? (
+                <p className="mt-1 text-xs text-zinc-500">
+                  Signed in as <span className="text-zinc-300">{ingestUserEmail}</span>
+                </p>
+              ) : null}
+            </div>
+            {ingestUserEmail ? (
+              <form
+                className="shrink-0"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  await fetch("/api/ingest-access/logout", { method: "POST" });
+                  window.location.href = "/ingest/login";
+                }}
+              >
+                <button
+                  type="submit"
+                  className="rounded-full border border-zinc-600 bg-zinc-900/80 px-3 py-1.5 text-xs text-zinc-200 transition hover:border-zinc-500"
+                >
+                  Sign out
+                </button>
+              </form>
+            ) : null}
+          </div>
           <StepNav step={currentStep} />
-          {message ? <p className="text-sm text-emerald-300">{message}</p> : null}
+          {message ? <p className="mt-2 text-sm text-emerald-300">{message}</p> : null}
         </div>
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.1fr_0.9fr]">

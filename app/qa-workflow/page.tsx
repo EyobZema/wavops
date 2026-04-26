@@ -1,15 +1,5 @@
-import Footer from "../components/footer";
-import Navbar from "../components/navbar";
-import QaWorkspace from "../components/qa-workspace";
+import { permanentRedirect } from "next/navigation";
 
-export default function QaWorkflowPage() {
-  return (
-    <div className="relative min-h-screen text-foreground">
-      <Navbar />
-      <main className="relative z-20">
-        <QaWorkspace />
-      </main>
-      <Footer />
-    </div>
-  );
+export default function QaWorkflowRedirectPage() {
+  permanentRedirect("/ingest");
 }

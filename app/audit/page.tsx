@@ -2,6 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { LegalAgreementField } from "@/components/upload";
 
 type LeadDraft = {
   name: string;
@@ -14,9 +15,14 @@ export default function AuditPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [agreed, setAgreed] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (!agreed) {
+      setError("Please accept the Terms of Service to submit your audit request.");
+      return;
+    }
     setIsSubmitting(true);
     setError("");
 
@@ -116,12 +122,20 @@ export default function AuditPage() {
               />
             </label>
 
+            <LegalAgreementField
+              variant="audit"
+              agreed={agreed}
+              onAgreedChange={setAgreed}
+              disabled={isSubmitting}
+              className="mt-1"
+            />
+
             {error ? <p className="text-sm text-red-400">{error}</p> : null}
 
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="rounded-full bg-zinc-100 px-7 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-white disabled:opacity-70"
+              disabled={isSubmitting || !agreed}
+              className="rounded-full bg-zinc-100 px-7 py-3 text-sm font-semibold text-zinc-950 transition hover:bg-white disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isSubmitting ? "Submitting..." : "Submit audit request"}
             </button>

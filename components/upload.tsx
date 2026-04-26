@@ -7,19 +7,51 @@ type LegalAgreementFieldProps = {
   agreed: boolean;
   onAgreedChange: (agreed: boolean) => void;
   disabled?: boolean;
+  /** `ingest` = audio upload workspace; `audit` = free audit / lead forms. */
+  variant?: "ingest" | "audit";
+  className?: string;
 };
 
+const auditLabel = (
+  <>
+    I agree to the{" "}
+    <Link
+      href="/terms"
+      className="font-medium text-emerald-400/90 underline decoration-emerald-500/40 underline-offset-2 hover:text-emerald-300"
+    >
+      Terms of Service
+    </Link>{" "}
+    and confirm I have the right to request a dataset review and that the information I submit is
+    accurate to the best of my knowledge.
+  </>
+);
+
+const ingestLabel = (
+  <>
+    I confirm I have the legal rights to upload and process this audio and agree to the{" "}
+    <Link
+      href="/terms"
+      className="font-medium text-emerald-400/90 underline decoration-emerald-500/40 underline-offset-2 hover:text-emerald-300"
+    >
+      Terms of Service
+    </Link>
+    .
+  </>
+);
+
 /**
- * Required checkbox and Terms link before upload or analysis of audio in the QA workspace.
+ * Required checkbox and Terms link before upload, analysis, or marketing/audit form submission.
  */
 export function LegalAgreementField({
   agreed,
   onAgreedChange,
   disabled,
+  variant = "ingest",
+  className = "",
 }: LegalAgreementFieldProps) {
   const id = useId();
   return (
-    <div className="mt-3 rounded-xl border border-zinc-800 bg-zinc-900/50 p-3">
+    <div className={`rounded-xl border border-zinc-800 bg-zinc-900/50 p-3 ${className}`.trim()}>
       <label htmlFor={id} className="flex cursor-pointer items-start gap-3 text-sm text-zinc-300">
         <input
           id={id}
@@ -29,16 +61,7 @@ export function LegalAgreementField({
           onChange={(e) => onAgreedChange(e.target.checked)}
           disabled={disabled}
         />
-        <span>
-          I confirm I have the legal rights to upload and process this audio and agree to the{" "}
-          <Link
-            href="/terms"
-            className="font-medium text-emerald-400/90 underline decoration-emerald-500/40 underline-offset-2 hover:text-emerald-300"
-          >
-            Terms of Service
-          </Link>
-          .
-        </span>
+        <span>{variant === "audit" ? auditLabel : ingestLabel}</span>
       </label>
     </div>
   );
