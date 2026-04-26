@@ -13,6 +13,7 @@ const sectionLinks = [
 const pageLinks = [
   { label: "Dataset Problems", href: "/audio-dataset-problems" },
   { label: "How WavOps Works", href: "/how-wavops-works" },
+  { label: "QA Workspace", href: "/qa-workflow" },
 ];
 
 function MenuIcon(props: { className?: string }) {

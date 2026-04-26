@@ -5,12 +5,20 @@
         <div className="flex w-full flex-col gap-2 px-6 py-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between lg:px-8">
           <p className="font-semibold text-foreground">WavOps</p>
           <p className="text-muted/90">Audio Data Intelligence for AI Systems</p>
-          <a
-            href="mailto:contact@wavops.io"
-            className="transition-colors hover:text-foreground"
-          >
-            contact@wavops.io
-          </a>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+            <a
+              href="/terms"
+              className="transition-colors hover:text-foreground"
+            >
+              Terms of Service
+            </a>
+            <a
+              href="mailto:contact@wavops.io"
+              className="transition-colors hover:text-foreground"
+            >
+              contact@wavops.io
+            </a>
+          </div>
         </div>
       </div>
     </footer>

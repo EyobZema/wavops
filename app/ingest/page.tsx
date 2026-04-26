@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function IngestRedirectPage() {
-  redirect("/portal?tab=data");
+  redirect("/qa-workflow");
 }
