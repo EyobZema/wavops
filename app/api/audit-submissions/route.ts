@@ -36,9 +36,9 @@ async function sendSubmissionEmails(params: {
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const secure = String(process.env.SMTP_SECURE || "false") === "true";
-  const from = process.env.SMTP_FROM || user;
+  const rawFrom = process.env.SMTP_FROM || user;
   const teamTo = process.env.AUDIT_TEAM_EMAIL || "contact@webops.io";
-  if (!host || !user || !pass || !from) {
+  if (!host || !user || !pass || !rawFrom) {
     return {
       smtpConfigured: false,
       teamEmailSent: false,
@@ -53,6 +53,9 @@ async function sendSubmissionEmails(params: {
     secure,
     auth: { user, pass },
   });
+  const from = rawFrom.includes("<")
+    ? rawFrom
+    : `"WavOps Team" <${rawFrom}>`;
 
   const lines = [
     `Name: ${params.name}`,
