@@ -16,6 +16,13 @@ function getString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
+type EmailSendResult = {
+  smtpConfigured: boolean;
+  teamEmailSent: boolean;
+  submitterEmailSent: boolean;
+  error?: string;
+};
+
 async function sendSubmissionEmails(params: {
   name: string;
   workEmail: string;
@@ -23,7 +30,7 @@ async function sendSubmissionEmails(params: {
   datasetType: string;
   datasetLink: string;
   folderAccessConfirmed: boolean;
-}) {
+}): Promise<EmailSendResult> {
   const host = process.env.SMTP_HOST;
   const port = Number(process.env.SMTP_PORT || 587);
   const user = process.env.SMTP_USER;
@@ -32,7 +39,12 @@ async function sendSubmissionEmails(params: {
   const from = process.env.SMTP_FROM || user;
   const teamTo = "contact@webops.io";
   if (!host || !user || !pass || !from) {
-    return;
+    return {
+      smtpConfigured: false,
+      teamEmailSent: false,
+      submitterEmailSent: false,
+      error: "SMTP is not fully configured.",
+    };
   }
 
   const transporter = nodemailer.createTransport({
@@ -51,14 +63,28 @@ async function sendSubmissionEmails(params: {
     `Folder access confirmed: ${params.folderAccessConfirmed ? "yes" : "no"}`,
   ];
 
-  await transporter.sendMail({
-    from,
-    to: teamTo,
-    subject: "New WavOps free audit request",
-    text: lines.join("\n"),
-    html: `<p>${lines.map((l) => l.replace(/</g, "&lt;")).join("<br/>")}</p>`,
-    replyTo: params.workEmail,
-  });
+  let teamEmailSent = false;
+  let submitterEmailSent = false;
+
+  try {
+    await transporter.sendMail({
+      from,
+      to: teamTo,
+      subject: "New WavOps free audit request",
+      text: lines.join("\n"),
+      html: `<p>${lines.map((l) => l.replace(/</g, "&lt;")).join("<br/>")}</p>`,
+      replyTo: params.workEmail,
+    });
+    teamEmailSent = true;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown SMTP error";
+    return {
+      smtpConfigured: true,
+      teamEmailSent: false,
+      submitterEmailSent: false,
+      error: `Team email failed: ${message}`,
+    };
+  }
 
   const confirmationText = [
     `Hi ${params.name},`,
@@ -77,16 +103,33 @@ async function sendSubmissionEmails(params: {
     "WavOps",
   ].join("\n");
 
-  await transporter.sendMail({
-    from,
-    to: params.workEmail,
-    subject: "WavOps audit request received",
-    text: confirmationText,
-    html: `<p>${confirmationText
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/\n/g, "<br/>")}</p>`,
-  });
+  try {
+    await transporter.sendMail({
+      from,
+      to: params.workEmail,
+      subject: "WavOps audit request received",
+      text: confirmationText,
+      html: `<p>${confirmationText
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/\n/g, "<br/>")}</p>`,
+    });
+    submitterEmailSent = true;
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown SMTP error";
+    return {
+      smtpConfigured: true,
+      teamEmailSent,
+      submitterEmailSent: false,
+      error: `Submitter email failed: ${message}`,
+    };
+  }
+
+  return {
+    smtpConfigured: true,
+    teamEmailSent,
+    submitterEmailSent,
+  };
 }
 
 export async function POST(request: Request) {
@@ -146,23 +189,32 @@ export async function POST(request: Request) {
     id = ref.id;
   }
 
-  try {
-    await sendSubmissionEmails({
-      name,
-      workEmail: workEmail.toLowerCase(),
-      company,
-      datasetType,
-      datasetLink,
-      folderAccessConfirmed,
-    });
-  } catch {
+  const emailResult = await sendSubmissionEmails({
+    name,
+    workEmail: workEmail.toLowerCase(),
+    company,
+    datasetType,
+    datasetLink,
+    folderAccessConfirmed,
+  });
+
+  if (emailResult.error) {
+    console.error("[audit-submissions] email delivery issue:", emailResult.error);
     if (!adminDb) {
       return NextResponse.json(
-        { error: "Email delivery failed and database storage is unavailable." },
+        {
+          error: "Email delivery failed and database storage is unavailable.",
+          emailResult,
+        },
         { status: 500 }
       );
     }
   }
 
-  return NextResponse.json({ ok: true, id });
+  return NextResponse.json({
+    ok: true,
+    id,
+    savedToFirestore: Boolean(id),
+    emailResult,
+  });
 }
