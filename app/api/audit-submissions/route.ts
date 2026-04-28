@@ -37,7 +37,7 @@ async function sendSubmissionEmails(params: {
   const pass = process.env.SMTP_PASS;
   const secure = String(process.env.SMTP_SECURE || "false") === "true";
   const from = process.env.SMTP_FROM || user;
-  const teamTo = "contact@webops.io";
+  const teamTo = process.env.AUDIT_TEAM_EMAIL || "contact@webops.io";
   if (!host || !user || !pass || !from) {
     return {
       smtpConfigured: false,
@@ -66,6 +66,8 @@ async function sendSubmissionEmails(params: {
   let teamEmailSent = false;
   let submitterEmailSent = false;
 
+  const errors: string[] = [];
+
   try {
     await transporter.sendMail({
       from,
@@ -78,12 +80,7 @@ async function sendSubmissionEmails(params: {
     teamEmailSent = true;
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown SMTP error";
-    return {
-      smtpConfigured: true,
-      teamEmailSent: false,
-      submitterEmailSent: false,
-      error: `Team email failed: ${message}`,
-    };
+    errors.push(`Team email failed: ${message}`);
   }
 
   const confirmationText = [
@@ -117,18 +114,14 @@ async function sendSubmissionEmails(params: {
     submitterEmailSent = true;
   } catch (error) {
     const message = error instanceof Error ? error.message : "Unknown SMTP error";
-    return {
-      smtpConfigured: true,
-      teamEmailSent,
-      submitterEmailSent: false,
-      error: `Submitter email failed: ${message}`,
-    };
+    errors.push(`Submitter email failed: ${message}`);
   }
 
   return {
     smtpConfigured: true,
     teamEmailSent,
     submitterEmailSent,
+    error: errors.length > 0 ? errors.join(" | ") : undefined,
   };
 }
 
