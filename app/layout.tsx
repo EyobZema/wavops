@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   title: "WavOps – Audio Data Intelligence for AI Systems",
   description,
   metadataBase: new URL("https://wavops.io"),
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-touch-icon.png",
+  },
   alternates: {
     canonical: "/",
   },
