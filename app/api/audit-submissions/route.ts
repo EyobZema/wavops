@@ -16,7 +16,7 @@ function getString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-async function sendSubmissionEmail(params: {
+async function sendSubmissionEmails(params: {
   name: string;
   workEmail: string;
   company: string;
@@ -30,7 +30,7 @@ async function sendSubmissionEmail(params: {
   const pass = process.env.SMTP_PASS;
   const secure = String(process.env.SMTP_SECURE || "false") === "true";
   const from = process.env.SMTP_FROM || user;
-  const to = "contact@webops.io";
+  const teamTo = "contact@webops.io";
   if (!host || !user || !pass || !from) {
     return;
   }
@@ -53,11 +53,39 @@ async function sendSubmissionEmail(params: {
 
   await transporter.sendMail({
     from,
-    to,
+    to: teamTo,
     subject: "New WavOps free audit request",
     text: lines.join("\n"),
     html: `<p>${lines.map((l) => l.replace(/</g, "&lt;")).join("<br/>")}</p>`,
     replyTo: params.workEmail,
+  });
+
+  const confirmationText = [
+    `Hi ${params.name},`,
+    "",
+    "Thanks for submitting your free dataset audit request to WavOps.",
+    "We received your details and our team will review your dataset and follow up soon.",
+    "",
+    "Submission summary:",
+    `- Company: ${params.company}`,
+    `- Dataset type: ${params.datasetType || "-"}`,
+    `- Dataset link: ${params.datasetLink}`,
+    "",
+    "Free audit disclaimer: up to 500 audio files are included in the free review.",
+    "",
+    "Best,",
+    "WavOps",
+  ].join("\n");
+
+  await transporter.sendMail({
+    from,
+    to: params.workEmail,
+    subject: "WavOps audit request received",
+    text: confirmationText,
+    html: `<p>${confirmationText
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/\n/g, "<br/>")}</p>`,
   });
 }
 
@@ -119,7 +147,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    await sendSubmissionEmail({
+    await sendSubmissionEmails({
       name,
       workEmail: workEmail.toLowerCase(),
       company,
