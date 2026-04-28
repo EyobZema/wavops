@@ -9,6 +9,8 @@ type LeadDraft = {
   workEmail: string;
   company: string;
   datasetType?: string;
+  datasetLink: string;
+  folderAccessConfirmed: boolean;
 };
 
 export default function AuditPage() {
@@ -32,6 +34,8 @@ export default function AuditPage() {
       workEmail: String(formData.get("workEmail") || ""),
       company: String(formData.get("company") || ""),
       datasetType: String(formData.get("datasetType") || ""),
+      datasetLink: String(formData.get("datasetLink") || ""),
+      folderAccessConfirmed: formData.get("folderAccessConfirmed") === "on",
     };
 
     const response = await fetch("/api/audit-submissions", {
@@ -121,6 +125,30 @@ export default function AuditPage() {
                 placeholder="Speech, music, podcasts, multilingual..."
               />
             </label>
+            <label className="block">
+              <span className="mb-2 block text-sm font-medium">
+                Drive or Dropbox link to your dataset
+              </span>
+              <input
+                name="datasetLink"
+                type="url"
+                required
+                className="w-full rounded-xl border border-zinc-700 bg-zinc-900 px-4 py-3 text-sm text-zinc-100 outline-none transition focus:border-zinc-500"
+                placeholder="https://drive.google.com/... or https://dropbox.com/..."
+              />
+            </label>
+            <label className="flex items-start gap-2 text-sm text-zinc-300">
+              <input
+                name="folderAccessConfirmed"
+                type="checkbox"
+                required
+                className="mt-1 h-4 w-4 rounded border-zinc-600 bg-zinc-900 accent-emerald-500"
+              />
+              <span>I confirm this folder is shared and viewable for review access.</span>
+            </label>
+            <p className="rounded-lg border border-zinc-800 bg-zinc-900/50 px-3 py-2 text-xs text-zinc-400">
+              Free audit disclaimer: up to 500 audio files are included in the free review.
+            </p>
 
             <LegalAgreementField
               variant="audit"

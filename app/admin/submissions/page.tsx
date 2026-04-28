@@ -9,6 +9,8 @@ type Submission = {
   workEmail: string;
   company: string;
   datasetType: string;
+  datasetLink: string;
+  folderAccessConfirmed: boolean;
   status: string;
   createdAt: string;
 };
@@ -33,6 +35,9 @@ async function readSubmissions(): Promise<Submission[]> {
       company: typeof data.company === "string" ? data.company : "",
       datasetType:
         typeof data.datasetType === "string" ? data.datasetType : "",
+      datasetLink:
+        typeof data.datasetLink === "string" ? data.datasetLink : "",
+      folderAccessConfirmed: data.folderAccessConfirmed === true,
       status: typeof data.status === "string" ? data.status : "new",
       createdAt: createdAt ? createdAt.toISOString() : "",
     };
@@ -86,6 +91,8 @@ export default async function AdminSubmissionsPage() {
                   <th className="px-4 py-3">Email</th>
                   <th className="px-4 py-3">Company</th>
                   <th className="px-4 py-3">Dataset</th>
+                  <th className="px-4 py-3">Link</th>
+                  <th className="px-4 py-3">Access</th>
                   <th className="px-4 py-3">Status</th>
                 </tr>
               </thead>
@@ -101,12 +108,29 @@ export default async function AdminSubmissionsPage() {
                     <td className="px-4 py-3">{submission.workEmail || "-"}</td>
                     <td className="px-4 py-3">{submission.company || "-"}</td>
                     <td className="px-4 py-3">{submission.datasetType || "-"}</td>
+                    <td className="max-w-[300px] px-4 py-3">
+                      {submission.datasetLink ? (
+                        <a
+                          href={submission.datasetLink}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="truncate text-emerald-300 underline decoration-emerald-700/40 underline-offset-2"
+                        >
+                          {submission.datasetLink}
+                        </a>
+                      ) : (
+                        "-"
+                      )}
+                    </td>
+                    <td className="px-4 py-3">
+                      {submission.folderAccessConfirmed ? "confirmed" : "no"}
+                    </td>
                     <td className="px-4 py-3">{submission.status || "new"}</td>
                   </tr>
                 ))}
                 {submissions.length === 0 ? (
                   <tr>
-                    <td className="px-4 py-6 text-zinc-400" colSpan={6}>
+                    <td className="px-4 py-6 text-zinc-400" colSpan={8}>
                       No submissions yet.
                     </td>
                   </tr>

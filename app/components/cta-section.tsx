@@ -43,6 +43,8 @@ export default function CtaSection() {
       workEmail: String(formData.get("workEmail") || ""),
       company: "Website lead",
       datasetType: String(formData.get("datasetType") || ""),
+      datasetLink: String(formData.get("datasetLink") || ""),
+      folderAccessConfirmed: formData.get("folderAccessConfirmed") === "on",
     };
 
     const response = await fetch("/api/audit-submissions", {
@@ -127,6 +129,28 @@ export default function CtaSection() {
                 placeholder="Speech, music, podcasts"
               />
             </label>
+            <label className="mb-3 block text-sm">
+              <span className="mb-1.5 block text-zinc-300">Drive or Dropbox link</span>
+              <input
+                required
+                type="url"
+                name="datasetLink"
+                className="w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-2 text-zinc-100 outline-none focus:border-zinc-500"
+                placeholder="https://drive.google.com/... or https://dropbox.com/..."
+              />
+            </label>
+            <label className="mb-3 flex items-start gap-2 text-xs text-zinc-300">
+              <input
+                required
+                name="folderAccessConfirmed"
+                type="checkbox"
+                className="mt-0.5 h-4 w-4 rounded border-zinc-600 bg-zinc-900 accent-emerald-500"
+              />
+              <span>I confirm the shared folder is viewable for review access.</span>
+            </label>
+            <p className="mb-3 rounded-lg border border-zinc-800 bg-zinc-900/50 px-3 py-2 text-xs text-zinc-400">
+              Free audit disclaimer: up to 500 audio files are included in the free review.
+            </p>
             <LegalAgreementField
               variant="audit"
               agreed={agreed}
