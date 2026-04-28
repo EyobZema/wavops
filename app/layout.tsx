@@ -17,9 +17,12 @@ export const metadata: Metadata = {
   description,
   metadataBase: new URL("https://wavops.io"),
   icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png?v=2", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png?v=2",
   },
   alternates: {
     canonical: "/",
